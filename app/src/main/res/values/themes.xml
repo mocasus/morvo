@@ -10,4 +10,12 @@
         <item name="android:textColor">#e6edf3</item>
         <item name="android:fontFamily">monospace</item>
     </style>
+
+    <style name="MorvoDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">#161b22</item>
+        <item name="android:textColor">#e6edf3</item>
+        <item name="android:textColorPrimary">#e6edf3</item>
+        <item name="colorAccent">#2ea44f</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
 </resources>
