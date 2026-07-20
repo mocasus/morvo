@@ -7,6 +7,24 @@ android {
     namespace = "com.morvo"
     compileSdk = 34
 
+    // Read signing config from signing.properties (CI-generated)
+    val signingProps = java.util.Properties()
+    val signingFile = rootProject.file("app/signing.properties")
+    if (signingFile.exists()) {
+        signingProps.load(signingFile.inputStream())
+    }
+
+    signingConfigs {
+        create("release") {
+            if (signingFile.exists()) {
+                storeFile = rootProject.file(signingProps.getProperty("storeFile") ?: "app/morvo.keystore")
+                storePassword = signingProps.getProperty("storePassword") ?: "android"
+                keyAlias = signingProps.getProperty("keyAlias") ?: "morvo"
+                keyPassword = signingProps.getProperty("keyPassword") ?: "android"
+            }
+        }
+    }
+
     defaultConfig {
         applicationId = "com.morvo"
         minSdk = 28
@@ -21,6 +39,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
