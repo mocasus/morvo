@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -8,10 +11,10 @@ android {
     compileSdk = 34
 
     // Read signing config from signing.properties (CI-generated)
-    val signingProps = java.util.Properties()
+    val signingProps = Properties()
     val signingFile = rootProject.file("app/signing.properties")
     if (signingFile.exists()) {
-        signingProps.load(signingFile.inputStream())
+        signingProps.load(FileInputStream(signingFile))
     }
 
     signingConfigs {
