@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo Floating Overlay Menu — Brutalist dark -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#0a0a0a"
+    android:padding="4dp">
+
+    <!-- Drag handle -->
+    <View
+        android:id="@+id/dragHandle"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="#2ea44f"
+        android:alpha="0.5"/>
+
+    <!-- Toggle expand/collapse -->
+    <Button
+        android:id="@+id/btnToggle"
+        android:layout_width="48dp"
+        android:layout_height="24dp"
+        android:text="+"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:textColor="#e6edf3"
+        android:backgroundTint="#161b22"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Quick action buttons (visible when expanded) -->
+    <LinearLayout
+        android:id="@+id/expandedMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnESP"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:text="ESP"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:textColor="#2ea44f"
+            android:backgroundTint="#111111"
+            android:layout_marginBottom="2dp"/>
+
+        <Button
+            android:id="@+id/btnAimbot"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:text="AIMBOT"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:textColor="#2ea44f"
+            android:backgroundTint="#111111"
+            android:layout_marginBottom="2dp"/>
+
+        <Button
+            android:id="@+id/btnFarm"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:text="FARM"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:textColor="#2ea44f"
+            android:backgroundTint="#111111"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/tvOverlayOutput"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="#0d1117"
+            android:textColor="#6e7681"
+            android:text="> ready"
+            android:fontFamily="monospace"
+            android:textSize="9sp"
+            android:padding="4dp"
+            android:layout_marginBottom="2dp"/>
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="120dp"
+            android:layout_height="28dp"
+            android:text="CLOSE"
+            android:textSize="9sp"
+            android:fontFamily="monospace"
+            android:textColor="#f85149"
+            android:backgroundTint="#111111"/>
+    </LinearLayout>
+</LinearLayout>

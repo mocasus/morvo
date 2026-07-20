@@ -1,0 +1,4 @@
+# Keep native libs
+*.so
+# Keep proguard
+!proguard-rules.pro
