@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo — Game card item (brutalist dark) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#111111"
+    android:padding="12dp"
+    android:layout_marginBottom="1dp"
+    android:gravity="center_vertical">
+
+    <!-- Thumbnail -->
+    <ImageView
+        android:id="@+id/ivThumb"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:scaleType="centerCrop"
+        android:background="#0a0a0a"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Game Name"
+            android:textColor="#e6edf3"
+            android:textSize="13sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tvCreator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="by Creator"
+            android:textColor="#6e7681"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/tvStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="0 playing • 0 visits"
+            android:textColor="#2ea44f"
+            android:textSize="10sp"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+
+    <!-- PLAY button -->
+    <TextView
+        android:id="@+id/btnPlay"
+        android:layout_width="56dp"
+        android:layout_height="36dp"
+        android:text="PLAY"
+        android:fontFamily="monospace"
+        android:textSize="10sp"
+        android:textColor="#0a0a0a"
+        android:gravity="center"
+        android:background="#2ea44f"
+        android:layout_marginStart="8dp"/>
+
+</LinearLayout>

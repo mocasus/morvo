@@ -32,8 +32,8 @@ android {
         applicationId = "com.morvo"
         minSdk = 28
         targetSdk = 34
-        versionCode = 2
-        versionName = "0.6.2"
+        versionCode = 3
+        versionName = "0.7.0"
 
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a")
@@ -84,4 +84,5 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }

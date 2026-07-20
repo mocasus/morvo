@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo — Floating overlay (collapsed FAB + expanded executor) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootOverlay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <!-- ========== COLLAPSED FAB ========== -->
+    <LinearLayout
+        android:id="@+id/fabCollapsed"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:background="@drawable/fab_bg"
+        android:orientation="vertical"
+        android:elevation="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:textColor="#2ea44f"
+            android:textSize="22sp"
+            android:fontFamily="monospace"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- ========== EXPANDED PANEL (hidden by default) ========== -->
+    <LinearLayout
+        android:id="@+id/panelExpanded"
+        android:layout_width="320dp"
+        android:layout_height="480dp"
+        android:orientation="vertical"
+        android:background="#0a0a0a"
+        android:padding="12dp"
+        android:visibility="gone"
+        android:elevation="12dp">
+
+        <!-- Header row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvOverlayLogo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="╔═ M O R V O ═╗"
+                android:textColor="#2ea44f"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/btnOverlayMinimize"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:text="_"
+                android:textColor="#6e7681"
+                android:textSize="14sp"
+                android:fontFamily="monospace"
+                android:background="#111111"/>
+        </LinearLayout>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvOverlayStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="> ready"
+            android:textColor="#6e7681"
+            android:textSize="11sp"
+            android:padding="6dp"
+            android:background="#111111"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Script editor -->
+        <EditText
+            android:id="@+id/etOverlayScript"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#111111"
+            android:textColor="#e6edf3"
+            android:textColorHint="#30363d"
+            android:hint="-- lua script"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:gravity="top|start"
+            android:padding="8dp"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:scrollbars="vertical"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Output -->
+        <TextView
+            android:id="@+id/tvOverlayOutput"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#0d1117"
+            android:textColor="#6e7681"
+            android:text="> output..."
+            android:fontFamily="monospace"
+            android:textSize="11sp"
+            android:padding="6dp"
+            android:scrollbars="vertical"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Button row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnOverlayInject"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:text="INJECT"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:textColor="#e6edf3"
+                android:backgroundTint="#161b22"
+                android:layout_marginEnd="3dp"/>
+
+            <Button
+                android:id="@+id/btnOverlayExecute"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:text="EXECUTE"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:textColor="#0a0a0a"
+                android:backgroundTint="#2ea44f"
+                android:layout_marginStart="3dp"/>
+
+            <Button
+                android:id="@+id/btnOverlayHub"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:text="HUB"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:textColor="#6e7681"
+                android:backgroundTint="#161b22"
+                android:layout_marginStart="3dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
