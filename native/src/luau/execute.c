@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
+#include <asm/ptrace.h>
 #include <sys/user.h>
 #include <sys/mman.h>
 #include <sys/ptrace.h>
 #include <sys/wait.h>
 #include <sys/uio.h>
 #include <errno.h>
-#include <asm/ptrace.h>
 #include <android/log.h>
 
 // Android NDK bionic doesn't expose these in <sys/ptrace.h>
