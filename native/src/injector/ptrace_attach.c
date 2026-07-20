@@ -1,4 +1,5 @@
 // morvo/native/src/injector/ptrace_attach.c
+#define _GNU_SOURCE
 #include <sys/ptrace.h>
 #include <sys/wait.h>
 #include <sys/uio.h>

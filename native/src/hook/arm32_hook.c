@@ -1,6 +1,7 @@
 // morvo/native/src/hook/arm32_hook.c
 // ARM32 (ARMv7 / Thumb-2) inline hook engine
 // Handles both ARM and Thumb mode targets
+#ifdef __arm__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -136,3 +137,5 @@ hook_t* arm32_inline_hook(void* target, void* detour) {
         return arm32_arm_hook(target, detour);
     }
 }
+
+#endif // __arm__
