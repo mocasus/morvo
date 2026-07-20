@@ -62,8 +62,11 @@ jobs:
 
       - name: Build APK
         run: |
-          BUILD_TYPE="${{ inputs.build_type || 'release' }}"
-          ./gradlew assemble${BUILD_TYPE^} --no-daemon -x lint
+          if [ "${{ inputs.build_type || 'release' }}" = "debug" ]; then
+            ./gradlew assembleDebug --no-daemon
+          else
+            ./gradlew assembleRelease --no-daemon
+          fi
 
       - name: Find APK
         id: apk
