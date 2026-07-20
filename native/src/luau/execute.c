@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
+#include <sys/user.h>
 #include <sys/mman.h>
 #include <sys/ptrace.h>
 #include <sys/wait.h>
@@ -19,6 +20,16 @@
 #endif
 #ifndef PTRACE_SETREGS
 #define PTRACE_SETREGS 13
+#endif
+
+// ARM64 user_pt_regs — may not be in NDK's <asm/ptrace.h>
+#ifndef __ASM_PTRACE_H
+struct user_pt_regs {
+    unsigned long long regs[31];
+    unsigned long long sp;
+    unsigned long long pc;
+    unsigned long long pstate;
+};
 #endif
 #include "luau.h"
 #include "injector.h"
