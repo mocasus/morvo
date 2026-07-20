@@ -1,0 +1,16 @@
+*.apk
+*.aab
+*.keystore
+*.jks
+.gradle/
+build/
+app/build/
+.idea/
+*.iml
+local.properties
+*.log
+.env
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
