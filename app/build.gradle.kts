@@ -20,7 +20,7 @@ android {
     signingConfigs {
         create("release") {
             if (signingFile.exists()) {
-                storeFile = rootProject.file(signingProps.getProperty("storeFile") ?: "app/morvo.keystore")
+                storeFile = rootProject.file("app/" + (signingProps.getProperty("storeFile") ?: "morvo.keystore"))
                 storePassword = signingProps.getProperty("storePassword") ?: "android"
                 keyAlias = signingProps.getProperty("keyAlias") ?: "morvo"
                 keyPassword = signingProps.getProperty("keyPassword") ?: "android"
