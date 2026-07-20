@@ -1,12 +1,16 @@
 // morvo/native/src/bypass/hyperion.c
 // Hyperion (Byfron) anti-cheat bypass for Android/ARM
 // Multiple layered bypasses for different detection vectors
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sched.h>
+#include <sys/mount.h>
+#include <sys/mman.h>
 #include <sys/ptrace.h>
 #include <sys/syscall.h>
 #include <dlfcn.h>
