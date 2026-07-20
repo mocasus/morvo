@@ -138,7 +138,7 @@ static void* remote_strdup(pid_t pid, const char* str) {
     // ARM64 mmap syscall number: 222
     remote_call(pid, NULL,  // We'll inject the syscall manually
                 0, len, PROT_READ | PROT_WRITE | PROT_EXEC,
-                MAP_PRIVATE | MAP_ANONYMOUS);
+                MAP_PRIVATE | MAP_ANONYMOUS, NULL);
     
     // For now, use /proc/pid/mem approach as fallback
     // Find a free page in the process address space
