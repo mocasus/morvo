@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo — Brutalist dark theme (mocasus.my.id style) -->
+<resources>
+    <style name="Theme.Morvo" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:colorBackground">#0a0a0a</item>
+        <item name="android:statusBarColor">#0a0a0a</item>
+        <item name="android:navigationBarColor">#0a0a0a</item>
+        <item name="android:windowBackground">@color/morvo_bg</item>
+        <item name="colorPrimary">#2ea44f</item>
+        <item name="android:textColor">#e6edf3</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+</resources>

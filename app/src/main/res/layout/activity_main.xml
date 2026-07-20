@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo — Brutalist dark theme layout (mocasus.my.id style) -->
+<!-- Sharp edges, monospace, green-on-black -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a0a0a"
+    android:padding="16dp">
+
+    <!-- Header: ASCII logo -->
+    <TextView
+        android:id="@+id/tvLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="╔══════════════════╗\n║     M O R V O    ║\n╚══════════════════╝"
+        android:textColor="#2ea44f"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:lineSpacingExtra="0dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Tier badge -->
+    <TextView
+        android:id="@+id/tvTier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="// FREE"
+        android:textColor="#6e7681"
+        android:textSize="11sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Status bar -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="> morvo v0.1.0 | ready"
+        android:textColor="#2ea44f"
+        android:textSize="12sp"
+        android:padding="8dp"
+        android:background="#111111"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Script editor -->
+    <EditText
+        android:id="@+id/etScript"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#111111"
+        android:textColor="#e6edf3"
+        android:textColorHint="#30363d"
+        android:hint="-- enter lua script here"
+        android:fontFamily="monospace"
+        android:textSize="12sp"
+        android:gravity="top|start"
+        android:padding="12dp"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:scrollbars="vertical"/>
+
+    <!-- Output console -->
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#0d1117"
+        android:textColor="#6e7681"
+        android:text="> output..."
+        android:fontFamily="monospace"
+        android:textSize="11sp"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Button row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:gravity="center">
+
+        <!-- Inject -->
+        <Button
+            android:id="@+id/btnInject"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="INJECT"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:textColor="#e6edf3"
+            android:backgroundTint="#161b22"
+            android:layout_marginEnd="4dp"/>
+
+        <!-- Execute -->
+        <Button
+            android:id="@+id/btnExecute"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="EXECUTE"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:textColor="#0a0a0a"
+            android:backgroundTint="#2ea44f"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+    <!-- Script Hub -->
+    <Button
+        android:id="@+id/btnHub"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:text="// Script Hub"
+        android:fontFamily="monospace"
+        android:textSize="11sp"
+        android:textColor="#6e7681"
+        android:backgroundTint="#161b22"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

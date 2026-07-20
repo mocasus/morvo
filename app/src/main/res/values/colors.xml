@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Morvo color palette — mocasus.my.id brutalist dark -->
+<resources>
+    <color name="morvo_bg">#0a0a0a</color>
+    <color name="morvo_surface">#111111</color>
+    <color name="morvo_card">#161b22</color>
+    <color name="morvo_border">#30363d</color>
+    <color name="morvo_green">#2ea44f</color>
+    <color name="morvo_red">#f85149</color>
+    <color name="morvo_white">#e6edf3</color>
+    <color name="morvo_dim">#6e7681</color>
+</resources>
