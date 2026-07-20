@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a0a0a"
+    android:padding="16dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="╔══════════════╗\n║  SCRIPT HUB  ║\n╚══════════════╝"
+        android:textColor="#2ea44f"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+    <TextView
+        android:id="@+id/tvHubStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="> loading..."
+        android:textColor="#6e7681"
+        android:textSize="11sp"
+        android:padding="8dp"
+        android:background="#111111"
+        android:layout_marginBottom="8dp"/>
+    <ListView
+        android:id="@+id/lvScripts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#111111"
+        android:divider="#30363d"
+        android:dividerHeight="1dp"
+        android:padding="4dp"/>
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="REFRESH"
+        android:fontFamily="monospace"
+        android:textSize="11sp"
+        android:textColor="#e6edf3"
+        android:backgroundTint="#161b22"/>
+</LinearLayout>
