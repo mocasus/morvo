@@ -10,7 +10,6 @@
 #include <sys/wait.h>
 #include <sys/uio.h>
 #include <errno.h>
-#include <asm/ptrace.h>
 #include <android/log.h>
 
 // Android NDK bionic doesn't expose these in <sys/ptrace.h>
@@ -20,6 +19,14 @@
 #ifndef PTRACE_SETREGS
 #define PTRACE_SETREGS 13
 #endif
+
+// ARM64 pt_regs — not exposed in NDK headers, define manually
+struct user_pt_regs {
+    unsigned long long regs[31];
+    unsigned long long sp;
+    unsigned long long pc;
+    unsigned long long pstate;
+};
 
 #include "luau.h"
 #include "injector.h"
