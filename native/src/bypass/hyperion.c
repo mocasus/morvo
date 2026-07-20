@@ -11,8 +11,12 @@
 #include <sys/syscall.h>
 #include <dlfcn.h>
 #include <android/log.h>
+#include "injector.h"
 
 #define LOG_TAG "Morvo-Hyperion"
+
+// Wildcard byte sentinel for signature patterns
+#define WILDCARD_BYTE 0xCC
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
@@ -160,9 +164,9 @@ static int cfg_cache_poison(pid_t pid, void* base, size_t size) {
     // Roblox uses a CRC32-based integrity checker
     // Signature: function prologue with CRC32 table reference
     static const uint8_t CRC_VALIDATOR_SIG[] = {
-        0x??, 0x??, 0x??, 0xD1,  // sub sp, sp, #...
-        0xFD, 0x7B, 0x??, 0xA9,  // stp x29, x30, [sp, #...]
-        0x??, 0x??, 0x??, 0x90,  // adrp x?, #crc32_table
+        WILDCARD_BYTE, WILDCARD_BYTE, WILDCARD_BYTE, 0xD1,  // sub sp, sp, #...
+        0xFD, 0x7B, WILDCARD_BYTE, 0xA9,  // stp x29, x30, [sp, #...]
+        WILDCARD_BYTE, WILDCARD_BYTE, WILDCARD_BYTE, 0x90,  // adrp x?, #crc32_table
     };
     
     void* validator = scan_memory(pid, validator_base, 0x2000000,

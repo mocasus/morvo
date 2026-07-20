@@ -36,4 +36,8 @@ void* mem_scan(pid_t pid, const uint8_t* pattern, const char* mask,
 // Get module base address from /proc/pid/maps
 uintptr_t get_module_base(pid_t pid, const char* module_name);
 
+// Simple memory scanner with inline wildcards (0xCC = any byte)
+void* scan_memory(pid_t pid, uintptr_t start, size_t length,
+                  const uint8_t* pattern, size_t pat_len);
+
 #endif // MORVO_INJECTOR_H

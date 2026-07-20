@@ -13,6 +13,9 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
+// Wildcard byte sentinel — replaces 0x?? in signature patterns
+#define WILDCARD_BYTE 0xCC
+
 // Boyer-Moore-Horspool bad character table (for non-wildcard bytes)
 #define ALPHABET_SIZE 256
 
@@ -40,7 +43,7 @@ static scanner_t* scanner_create(const uint8_t* pattern, size_t length) {
     // For wildcard-aware scanning, use last non-wildcard byte
     // Count wildcards
     for (size_t i = 0; i < length; i++) {
-        if (pattern[i] != 0x??) {
+        if (pattern[i] != WILDCARD_BYTE) {
             s->bad_char[pattern[i]] = length - 1 - i;
         } else {
             s->wildcard_count++;
