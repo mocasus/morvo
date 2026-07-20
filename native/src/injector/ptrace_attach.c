@@ -1,6 +1,8 @@
 // morvo/native/src/injector/ptrace_attach.c
 #include <sys/ptrace.h>
 #include <sys/wait.h>
+#include <sys/uio.h>
+#include <errno.h>
 #include <dirent.h>
 #include <stdio.h>
 #include <string.h>

@@ -3,6 +3,8 @@
 // JNI bridge between Kotlin UI and native exploit engine
 
 #include <jni.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <android/log.h>
 #include "injector.h"

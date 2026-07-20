@@ -10,6 +10,7 @@
 #include <sys/ptrace.h>
 #include <sys/syscall.h>
 #include <dlfcn.h>
+#include <errno.h>
 #include <android/log.h>
 #include "injector.h"
 

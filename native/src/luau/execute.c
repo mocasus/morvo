@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 #include <sys/ptrace.h>
+#include <sys/wait.h>
 #include <sys/uio.h>
+#include <errno.h>
+#include <asm/ptrace.h>
 #include <android/log.h>
 #include "luau.h"
 #include "injector.h"
@@ -81,7 +85,7 @@ static int remote_call(pid_t pid, void* func_addr,
     regs.regs[2] = x2;
     regs.regs[3] = x3;
     regs.pc = (uint64_t)func_addr;
-    regs.lr = 0;  // Return to 0 = our breakpoint trap
+    regs.regs[30] = 0;  // Return to 0 = our breakpoint trap (lr = x30)
     
     if (ptrace(PTRACE_SETREGS, pid, NULL, &regs) == -1) {
         LOGE("PTRACE_SETREGS failed: %s", strerror(errno));
