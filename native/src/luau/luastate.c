@@ -132,36 +132,3 @@ void* find_lua_state(pid_t pid) {
     
     return (void*)(base + 0xDEAD000);  // Placeholder — needs calibration
 }
-
-// Get module base address from /proc/pid/maps
-uintptr_t get_module_base(pid_t pid, const char* module_name) {
-    char maps_path[256];
-    snprintf(maps_path, sizeof(maps_path), "/proc/%d/maps", pid);
-    
-    FILE* fp = fopen(maps_path, "r");
-    if (!fp) {
-        LOGE("Cannot open %s", maps_path);
-        return 0;
-    }
-    
-    char line[512];
-    while (fgets(line, sizeof(line), fp)) {
-        // Format: start-end perms offset dev inode pathname
-        char perms[8], path[256] = {0};
-        uintptr_t start, end;
-        
-        int n = sscanf(line, "%lx-%lx %7s %*x %*s %*d %255s", 
-                       &start, &end, perms, path);
-        
-        if (n >= 3 && strstr(path, module_name)) {
-            // Only return executable regions
-            if (perms[2] == 'x') {
-                fclose(fp);
-                return start;
-            }
-        }
-    }
-    
-    fclose(fp);
-    return 0;
-}
