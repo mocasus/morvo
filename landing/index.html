@@ -3,183 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Morvo — The most advanced Roblox Executor for Android. Execute any script. Free download.">
-<title>Morvo Executor — #1 Roblox Exploit for Android</title>
+<meta name="description" content="Morvo Executor — #1 Free Roblox Script Executor for Android. 50+ scripts, 7-layer bypass. Download now.">
+<meta name="keywords" content="morvo executor, roblox executor, android executor, free roblox exploit, roblox script executor, morvo key">
+<title>Morvo Executor — #1 Roblox Exploit for Android | Free Download 2026</title>
 <style>
 /* ============================================================
-   MORVO LANDING — Delta Executor style
-   Dark brutalist theme, clean layout, platform cards
+   MORVO LANDING v2 — Delta-style multi-page
    ============================================================ */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#06080a;
-  --surface:#0d1117;
-  --border:#21262d;
-  --accent:#2ea44f;
-  --accent-glow:rgba(46,164,79,0.4);
-  --text:#c9d1d9;
-  --muted:#6e7681;
-  --danger:#da3633;
-  --orange:#d2991d;
-  --blue:#58a6ff;
+  --bg:#06080a; --surface:#0d1117; --border:#21262d;
+  --accent:#2ea44f; --accent-glow:rgba(46,164,79,0.4);
+  --text:#c9d1d9; --muted:#6e7681; --danger:#da3633;
+  --orange:#d2991d; --blue:#58a6ff; --purple:#a371f7;
 }
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-}
+
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
-
-/* Container */
 .container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
 
 /* Nav */
-nav{
-  border-bottom:1px solid var(--border);
-  padding:1rem 0;
-  position:sticky;top:0;z-index:100;
-  background:rgba(6,8,10,0.95);
-  backdrop-filter:blur(10px);
-}
+nav{border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:100;background:rgba(6,8,10,0.95);backdrop-filter:blur(10px)}
 nav .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 nav .logo{font-size:1.3rem;font-weight:800;color:var(--accent);letter-spacing:-0.5px}
 nav .logo span{color:var(--text);font-weight:400}
-nav .nav-links{display:flex;gap:1.5rem;align-items:center}
-nav .nav-links a{color:var(--muted);font-size:.85rem;transition:color .2s}
-nav .nav-links a:hover{color:var(--text);text-decoration:none}
-nav .version{background:var(--surface);border:1px solid var(--border);padding:.25rem .75rem;border-radius:4px;font-size:.75rem;color:var(--accent);font-family:monospace}
+nav .nav-links{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+nav .nav-links a{color:var(--muted);font-size:.82rem;transition:color .2s}
+nav .nav-links a:hover,.nav-links a.active{color:var(--text);text-decoration:none}
+nav .nav-links a.active{color:var(--accent)}
+nav .version{background:var(--surface);border:1px solid var(--border);padding:.2rem .65rem;border-radius:4px;font-size:.72rem;color:var(--accent);font-family:monospace}
 
 /* Hero */
-.hero{padding:4rem 0 3rem;text-align:center;position:relative}
-.hero::before{
-  content:'';position:absolute;
-  width:600px;height:600px;
-  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);
-  top:-200px;left:50%;transform:translateX(-50%);
-  pointer-events:none;z-index:0;
-}
+.hero{padding:5rem 0 3rem;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);top:-250px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0}
 .hero .container{position:relative;z-index:1}
-.hero h1{font-size:3rem;font-weight:900;line-height:1.1;margin-bottom:1rem}
-.hero h1 .green{color:var(--accent)}
-.hero p.subtitle{font-size:1.15rem;color:var(--muted);max-width:650px;margin:0 auto 2.5rem}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.15;margin-bottom:1rem}
+.hero .green{color:var(--accent)}
+.hero p.subtitle{font-size:1.1rem;color:var(--muted);max-width:650px;margin:0 auto 2rem}
 
-/* Stats bar */
-.stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1rem}
+/* Stats */
+.stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .stat-item{text-align:center}
 .stat-item .num{font-size:1.8rem;font-weight:800;color:var(--accent);font-family:monospace}
-.stat-item .label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.stat-item .label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* CTA buttons */
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.btn-download{padding:.85rem 2rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:700;font-size:1rem;display:inline-block;transition:all .2s}
+.btn-download:hover{background:#3fb950;transform:scale(1.03);text-decoration:none}
+.btn-key{padding:.85rem 2rem;background:transparent;color:var(--accent);border:2px solid var(--accent);border-radius:8px;font-weight:700;font-size:1rem;display:inline-block;transition:all .2s}
+.btn-key:hover{background:rgba(46,164,79,0.1);text-decoration:none;transform:scale(1.03)}
+.btn-premium{padding:.85rem 2rem;background:var(--orange);color:#000;border-radius:8px;font-weight:700;font-size:1rem;display:inline-block;transition:all .2s}
+.btn-premium:hover{background:#e6a817;transform:scale(1.03);text-decoration:none}
+
+/* Section title */
+.sec-title{text-align:center;font-size:1.6rem;margin-bottom:2.5rem;font-weight:800}
+.sec-title .icon{color:var(--accent)}
 
 /* Platform cards */
-.platforms{padding:2rem 0 4rem}
-.platforms h2{text-align:center;font-size:1.5rem;margin-bottom:2rem;color:var(--text)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:2rem 1.5rem;
-  text-align:center;
-  transition:all .2s;
-  position:relative;
-  overflow:hidden;
-}
-.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(46,164,79,0.1)}
-.card.active{border-color:var(--accent)}
-.card.coming-soon{opacity:0.6;pointer-events:none}
-.card .icon{font-size:2.5rem;margin-bottom:1rem}
-.card h3{font-size:1.1rem;margin-bottom:.25rem}
-.card .meta{font-size:.75rem;color:var(--muted);margin-bottom:1.25rem}
-.card .btn{
-  display:inline-block;
-  padding:.6rem 1.5rem;
-  background:var(--accent);
-  color:#fff;
-  border-radius:6px;
-  font-weight:600;
-  font-size:.85rem;
-  border:none;cursor:pointer;
-  transition:all .2s;
-  text-decoration:none;
-}
-.card .btn:hover{background:#3fb950;text-decoration:none;transform:scale(1.02)}
-.card.coming-soon .btn{background:var(--border);color:var(--muted);cursor:default}
-.card .badge{
-  position:absolute;top:12px;right:12px;
-  font-size:.6rem;padding:.2rem .5rem;border-radius:3px;
-  text-transform:uppercase;font-weight:700;letter-spacing:.5px;
-}
-.badge-free{background:rgba(46,164,79,0.15);color:var(--accent)}
-.badge-premium{background:rgba(210,153,29,0.15);color:var(--orange)}
-.badge-new{background:rgba(88,166,255,0.15);color:var(--blue)}
+.platforms{padding:3rem 0;border-top:1px solid var(--border)}
+.platforms .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:2rem}
+.platforms .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem 1.5rem;text-align:center;transition:all .2s;position:relative}
+.platforms .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(46,164,79,0.1)}
+.platforms .card.active{border-color:var(--accent)}
+.platforms .card.coming-soon{opacity:0.5;pointer-events:none}
+.platforms .card .p-icon{font-size:2.5rem;margin-bottom:.75rem}
+.platforms .card h3{font-size:1.1rem;margin-bottom:.25rem}
+.platforms .card .p-meta{font-size:.72rem;color:var(--muted);margin-bottom:1.25rem}
+.platforms .card .p-badge{position:absolute;top:12px;right:12px;font-size:.6rem;padding:.2rem .5rem;border-radius:3px;text-transform:uppercase;font-weight:700;letter-spacing:.5px}
+.platforms .p-badge-free{background:rgba(46,164,79,0.15);color:var(--accent)}
+.platforms .p-badge-premium{background:rgba(210,153,29,0.15);color:var(--orange)}
+.platforms .p-badge-new{background:rgba(88,166,255,0.15);color:var(--blue)}
+.platforms .card .p-btn{display:inline-block;padding:.55rem 1.4rem;background:var(--accent);color:#fff;border-radius:6px;font-weight:600;font-size:.82rem;transition:all .2s;text-decoration:none}
+.platforms .card .p-btn:hover{background:#3fb950;text-decoration:none;transform:scale(1.02)}
+.platforms .card.coming-soon .p-btn{background:var(--border);color:var(--muted);cursor:default}
 
 /* Features */
 .features{padding:4rem 0;border-top:1px solid var(--border)}
-.features h2{text-align:center;font-size:1.5rem;margin-bottom:2.5rem}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-.feature{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:1.5rem;
-}
-.feature .icon{font-size:1.5rem;margin-bottom:.75rem}
-.feature h4{font-size:.95rem;margin-bottom:.5rem}
-.feature p{font-size:.8rem;color:var(--muted);line-height:1.5}
+.features .f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.features .feat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+.features .feat .f-icon{font-size:1.4rem;margin-bottom:.6rem}
+.features .feat h4{font-size:.92rem;margin-bottom:.4rem}
+.features .feat p{font-size:.78rem;color:var(--muted);line-height:1.5}
 
-/* Script section */
-.scripts{padding:4rem 0;border-top:1px solid var(--border)}
-.scripts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}
-.script-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:6px;
-  padding:1rem;
-  text-align:center;
-  font-size:.8rem;
-  transition:all .2s;
-}
-.script-card:hover{border-color:var(--accent)}
-.script-card .game{font-weight:600;color:var(--text)}
-.script-card .type{font-size:.65rem;color:var(--muted);margin-top:.25rem}
+/* How it works */
+.how{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 0}
+.how .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;counter-reset:step}
+.how .step{position:relative;padding:1.5rem;text-align:center}
+.how .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--accent);color:#fff;border-radius:50%;font-weight:800;font-size:1.1rem;margin-bottom:.75rem}
+.how .step h4{font-size:.9rem;margin-bottom:.4rem}
+.how .step p{font-size:.75rem;color:var(--muted)}
 
-/* CTA */
-.cta{padding:4rem 0;text-align:center;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.cta h2{font-size:1.8rem;margin-bottom:.75rem}
-.cta p{color:var(--muted);margin-bottom:2rem;font-size:1rem}
-.cta .btn-lg{
-  padding:.9rem 2.5rem;
-  background:var(--accent);
-  color:#fff;
-  border-radius:8px;
-  font-size:1.1rem;
-  font-weight:700;
-  display:inline-block;
-  transition:all .2s;
-}
-.cta .btn-lg:hover{background:#3fb950;transform:scale(1.03);text-decoration:none}
+/* Game grid */
+.games{padding:4rem 0;border-top:1px solid var(--border)}
+.games .g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}
+.games .g-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.9rem;text-align:center;font-size:.78rem;transition:all .2s}
+.games .g-card:hover{border-color:var(--accent)}
+.games .g-card .g-name{font-weight:600;color:var(--text)}
+.games .g-card .g-type{font-size:.62rem;color:var(--muted);margin-top:.15rem}
+
+/* Comparison table */
+.compare{padding:4rem 0;border-top:1px solid var(--border)}
+.compare table{width:100%;border-collapse:collapse;font-size:.82rem}
+.compare th{text-align:left;padding:.75rem 1rem;background:var(--surface);border-bottom:2px solid var(--accent);font-weight:700}
+.compare td{padding:.65rem 1rem;border-bottom:1px solid var(--border)}
+.compare .check{color:var(--accent);font-weight:700}
+.compare .cross{color:var(--danger)}
+.compare .soon{color:var(--orange);font-size:.7rem}
+.compare .highlight{background:rgba(46,164,79,0.05)}
+
+/* FAQ */
+.faq{padding:4rem 0;border-top:1px solid var(--border)}
+.faq .faq-item{margin-bottom:1.2rem}
+.faq .faq-q{font-weight:700;font-size:.92rem;cursor:pointer;padding:.6rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.faq .faq-q:hover{color:var(--accent)}
+.faq .faq-a{font-size:.8rem;color:var(--muted);padding:.6rem 0;display:none;line-height:1.6}
+.faq .faq-item.open .faq-a{display:block}
+
+/* CTA footer */
+.cta-footer{padding:4rem 0;text-align:center;background:var(--surface);border-top:1px solid var(--border)}
+.cta-footer h2{font-size:1.8rem;margin-bottom:.5rem}
+.cta-footer p{color:var(--muted);margin-bottom:2rem}
+.cta-footer .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
 /* Footer */
-footer{padding:2rem 0;text-align:center;font-size:.75rem;color:var(--muted)}
-footer a{color:var(--accent)}
+footer{padding:2.5rem 0;text-align:center;font-size:.72rem;color:var(--muted)}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+footer .footer-links a{color:var(--muted);transition:color .2s}
+footer .footer-links a:hover{color:var(--accent);text-decoration:none}
+footer .disclaimer{font-size:.65rem;margin-top:.5rem}
 
-/* Responsive */
+/* Alert */
+.alert{background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);padding:.75rem 1rem;border-radius:6px;font-size:.8rem;margin-bottom:1.5rem;text-align:center;color:var(--blue)}
+
+/* Mobile */
 @media(max-width:768px){
   .hero h1{font-size:2rem}
   .stats{gap:1.5rem}
   nav .nav-links{display:none}
-  .cards{grid-template-columns:1fr}
-}
-
-/* Alert banner */
-.alert{
-  background:rgba(88,166,255,0.08);
-  border:1px solid rgba(88,166,255,0.2);
-  padding:.75rem 1rem;border-radius:6px;
-  font-size:.8rem;margin-bottom:2rem;text-align:center;
-  color:var(--blue);
+  .platforms .cards{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -190,12 +153,12 @@ footer a{color:var(--accent)}
   <div class="container">
     <a href="/" class="logo">MORVO<span> executor</span></a>
     <div class="nav-links">
-      <a href="#download">Download</a>
-      <a href="#features">Features</a>
-      <a href="#scripts">Script Hub</a>
-      <a href="https://morvo-dashboard.vercel.app" target="_blank">Dashboard</a>
-      <a href="https://github.com/mocasus/morvo" target="_blank">GitHub</a>
-      <span class="version">v0.5.1</span>
+      <a href="/" class="active">Home</a>
+      <a href="/key.html">Get Key</a>
+      <a href="/download.html">Download</a>
+      <a href="/tutorial.html">Tutorial</a>
+      <a href="/premium.html">Premium</a>
+      <span class="version">v0.6.0</span>
     </div>
   </div>
 </nav>
@@ -203,108 +166,130 @@ footer a{color:var(--accent)}
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <h1><span class="green">Morvo</span> — The Most Advanced<br>Roblox Executor for Android</h1>
+    <h1><span class="green">Morvo Executor</span> — The Most<br>Advanced Roblox Exploit for Android</h1>
     <p class="subtitle">
-      Execute any Lua script in Roblox with our powerful injection engine.
-      Built from scratch with Hyperion bypass, floating overlay, and script hub.
-      Free. Fast. Undetected.
+      Execute any Lua script in Roblox with our custom-built injection engine.
+      Hyperion bypass, floating overlay menu, built-in script hub. Free. Fast. Undetected.
     </p>
-
     <div class="stats">
-      <div class="stat-item"><div class="num">40+</div><div class="label">Scripts</div></div>
-      <div class="stat-item"><div class="num">50K+</div><div class="label">Executions</div></div>
+      <div class="stat-item"><div class="num">50+</div><div class="label">Scripts</div></div>
+      <div class="stat-item"><div class="num">100K+</div><div class="label">Executions</div></div>
       <div class="stat-item"><div class="num">7</div><div class="label">Bypass Layers</div></div>
       <div class="stat-item"><div class="num">2.5MB</div><div class="label">APK Size</div></div>
+    </div>
+    <div class="cta-buttons">
+      <a href="/download.html" class="btn-download">⬇ Download APK — Free</a>
+      <a href="/key.html" class="btn-key">🔑 Get Key</a>
+      <a href="/premium.html" class="btn-premium">⭐ Premium — Keyless</a>
     </div>
   </div>
 </section>
 
-<!-- Platform Downloads -->
-<section id="download" class="platforms">
+<!-- Platform Cards -->
+<section class="platforms" id="download">
   <div class="container">
-    <h2>⬇ Choose Your Platform</h2>
-
+    <h2 class="sec-title">⬇ <span class="icon">Choose Your Platform</span></h2>
     <div class="cards">
-      <!-- Android (Available) -->
       <div class="card active">
-        <span class="badge badge-free">FREE</span>
-        <div class="icon">🤖</div>
+        <span class="p-badge p-badge-free">FREE</span>
+        <div class="p-icon">🤖</div>
         <h3>Android</h3>
-        <div class="meta">ARM64 · 9.0+ · 2.5 MB</div>
-        <a href="https://github.com/mocasus/morvo/releases/latest/download/morvo-exe.apk?t=2" class="btn" onclick="trackDownload('android')">
-          ⬇ Download APK
-        </a>
-        <div style="margin-top:0.75rem;font-size:0.65rem;color:var(--muted)">
-          Direct APK · No Key System*
-        </div>
+        <div class="p-meta">ARM64 · 9.0+ · 2.5 MB</div>
+        <a href="https://github.com/mocasus/morvo/releases/latest/download/morvo-exe.apk" class="p-btn">⬇ Download APK</a>
+        <div style="margin-top:.6rem;font-size:.62rem;color:var(--muted)">Requires key activation</div>
       </div>
-
-      <!-- Windows (Coming Soon) -->
       <div class="card coming-soon">
-        <span class="badge badge-new">SOON</span>
-        <div class="icon">🪟</div>
+        <span class="p-badge p-badge-new">Q3 2026</span>
+        <div class="p-icon">🪟</div>
         <h3>Windows</h3>
-        <div class="meta">x64 · Win 10+</div>
-        <span class="btn">Coming Q3 2026</span>
+        <div class="p-meta">x64 · Win 10+</div>
+        <span class="p-btn">Coming Soon</span>
       </div>
-
-      <!-- iOS (Coming Soon) -->
       <div class="card coming-soon">
-        <span class="badge badge-new">BETA</span>
-        <div class="icon">🍎</div>
+        <span class="p-badge p-badge-new">BETA</span>
+        <div class="p-icon">🍎</div>
         <h3>iOS</h3>
-        <div class="meta">Jailbreak · SideStore</div>
-        <span class="btn">Coming Soon</span>
+        <div class="p-meta">SideStore · AltStore</div>
+        <span class="p-btn">Coming Soon</span>
       </div>
-
-      <!-- Mac (Coming Soon) -->
       <div class="card coming-soon">
-        <span class="badge badge-new">PLAN</span>
-        <div class="icon">💻</div>
+        <span class="p-badge p-badge-new">PLAN</span>
+        <div class="p-icon">💻</div>
         <h3>macOS</h3>
-        <div class="meta">Apple Silicon</div>
-        <span class="btn">Coming Soon</span>
+        <div class="p-meta">Apple Silicon</div>
+        <span class="p-btn">Coming Soon</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <div style="text-align:center;margin-top:1.5rem;font-size:0.7rem;color:var(--muted)">
-      *Free tier includes 1 device, 7-day license. <a href="https://morvo-dashboard.vercel.app" target="_blank">Generate key →</a>
+<!-- How it Works -->
+<section class="how">
+  <div class="container">
+    <h2 class="sec-title">🔑 <span class="icon">How Morvo Key System Works</span></h2>
+    <div class="alert">⚠️ Each key is valid for <strong>24 hours</strong> and bound to your device. Generate a new key daily.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Download APK</h4>
+        <p>Get the latest Morvo APK from our official site</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Install & Open</h4>
+        <p>Enable Unknown Sources, install the APK, launch Morvo</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Complete Tasks</h4>
+        <p>Visit Loot-Link gateway and complete a few quick tasks</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Get Your Key</h4>
+        <p>Receive a 24-hour activation key bound to your device</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4>Execute Scripts</h4>
+        <p>Paste the key, activate, and start running any script!</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Features -->
-<section id="features" class="features">
+<section class="features" id="features">
   <div class="container">
-    <h2>⚡ Why Morvo?</h2>
-    <div class="feature-grid">
-      <div class="feature">
-        <div class="icon">🎯</div>
+    <h2 class="sec-title">⚡ <span class="icon">Why Morvo?</span></h2>
+    <div class="f-grid">
+      <div class="feat">
+        <div class="f-icon">🎯</div>
         <h4>Native ARM64 Injection</h4>
         <p>ptrace-based process attachment directly into Roblox's memory space. No emulation, no lag.</p>
       </div>
-      <div class="feature">
-        <div class="icon">🛡️</div>
+      <div class="feat">
+        <div class="f-icon">🛡️</div>
         <h4>7-Layer Hyperion Bypass</h4>
         <p>Cache poisoning, PAC bypass, CRC poisoning, debug detection evasion — all 7 layers bypassed.</p>
       </div>
-      <div class="feature">
-        <div class="icon">📱</div>
+      <div class="feat">
+        <div class="f-icon">📱</div>
         <h4>Floating Overlay Menu</h4>
         <p>In-game script execution with brutalist dark UI. Execute without leaving the game.</p>
       </div>
-      <div class="feature">
-        <div class="icon">🔧</div>
+      <div class="feat">
+        <div class="f-icon">🔧</div>
         <h4>Full Luau VM Access</h4>
-        <p>Remote execution via lua_State manipulation. Execute any Luau script instantly.</p>
+        <p>Remote execution via lua_State manipulation. Full access to Roblox's Lua environment.</p>
       </div>
-      <div class="feature">
-        <div class="icon">📦</div>
+      <div class="feat">
+        <div class="f-icon">📦</div>
         <h4>Built-in Script Hub</h4>
-        <p>Pre-loaded scripts for Arsenal, Blade Ball, Adopt Me, Pet Sim, Blox Fruits, and more.</p>
+        <p>50+ pre-loaded scripts for Arsenal, Blade Ball, Blox Fruits, Adopt Me, and more.</p>
       </div>
-      <div class="feature">
-        <div class="icon">🔄</div>
+      <div class="feat">
+        <div class="f-icon">🔄</div>
         <h4>Auto-Update Engine</h4>
         <p>CI/CD auto-build on push. Always get the latest offsets and bypasses automatically.</p>
       </div>
@@ -312,58 +297,116 @@ footer a{color:var(--accent)}
   </div>
 </section>
 
-<!-- Scripts -->
-<section id="scripts" class="scripts">
+<!-- Games -->
+<section class="games">
   <div class="container">
-    <h2>🎮 Supported Games</h2>
-    <div class="scripts-grid">
-      <div class="script-card"><div class="game">Arsenal</div><div class="type">Silent Aim + ESP</div></div>
-      <div class="script-card"><div class="game">Blade Ball</div><div class="type">Auto Parry</div></div>
-      <div class="script-card"><div class="game">Adopt Me</div><div class="type">Auto Farm + Dupe</div></div>
-      <div class="script-card"><div class="game">Pet Simulator</div><div class="type">Auto Hatch + Teleport</div></div>
-      <div class="script-card"><div class="game">Blox Fruits</div><div class="type">Auto Farm + Boss</div></div>
-      <div class="script-card"><div class="game">Brookhaven</div><div class="type">ESP + Noclip</div></div>
-      <div class="script-card"><div class="game">Murder Mystery</div><div class="type">ESP + God Mode</div></div>
-      <div class="script-card"><div class="game">Jailbreak</div><div class="type">Auto Rob + Teleport</div></div>
-      <div class="script-card"><div class="game">+30 more</div><div class="type">Script Hub Library</div></div>
+    <h2 class="sec-title">🎮 <span class="icon">Supported Games</span></h2>
+    <div class="g-grid">
+      <div class="g-card"><div class="g-name">Arsenal</div><div class="g-type">Silent Aim + ESP</div></div>
+      <div class="g-card"><div class="g-name">Blade Ball</div><div class="g-type">Auto Parry</div></div>
+      <div class="g-card"><div class="g-name">Adopt Me</div><div class="g-type">Auto Farm + Dupe</div></div>
+      <div class="g-card"><div class="g-name">Pet Simulator</div><div class="g-type">Auto Hatch</div></div>
+      <div class="g-card"><div class="g-name">Blox Fruits</div><div class="g-type">Auto Farm + Boss</div></div>
+      <div class="g-card"><div class="g-name">Brookhaven</div><div class="g-type">ESP + Noclip</div></div>
+      <div class="g-card"><div class="g-name">Murder Mystery</div><div class="g-type">ESP + God Mode</div></div>
+      <div class="g-card"><div class="g-name">Jailbreak</div><div class="g-type">Auto Rob + Teleport</div></div>
+      <div class="g-card"><div class="g-name">Fisch</div><div class="g-type">Auto Fish + ESP</div></div>
+      <div class="g-card"><div class="g-name">Doors</div><div class="g-type">ESP + Speed</div></div>
+      <div class="g-card"><div class="g-name">BedWars</div><div class="g-type">Kill Aura</div></div>
+      <div class="g-card"><div class="g-name">+40 more</div><div class="g-type">Full Script Hub</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Free vs Premium -->
+<section class="compare">
+  <div class="container">
+    <h2 class="sec-title">💎 <span class="icon">Free vs Premium</span></h2>
+    <table>
+      <tr><th>Feature</th><th>Free</th><th>Premium ($5/mo)</th></tr>
+      <tr><td>All Scripts</td><td class="check">✓</td><td class="check">✓</td></tr>
+      <tr><td>7-Layer Bypass</td><td class="check">✓</td><td class="check">✓</td></tr>
+      <tr><td>Floating Menu</td><td class="check">✓</td><td class="check">✓</td></tr>
+      <tr class="highlight"><td>Key Required</td><td>Daily (24h)</td><td class="check">NO KEY</td></tr>
+      <tr class="highlight"><td>Gateway Tasks</td><td>Required</td><td class="check">SKIP ALL</td></tr>
+      <tr><td>Priority Updates</td><td class="cross">✗</td><td class="check">✓</td></tr>
+      <tr><td>Exclusive Scripts</td><td class="cross">✗</td><td class="check">✓</td></tr>
+      <tr><td>Multi-Device</td><td>1 device</td><td class="check">3 devices</td></tr>
+      <tr><td>Discord Role</td><td class="cross">✗</td><td class="check">✓</td></tr>
+    </table>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="/premium.html" class="btn-premium">⭐ Get Premium — $5/month</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="sec-title">❓ <span class="icon">Frequently Asked Questions</span></h2>
+    <div class="faq-item open">
+      <div class="faq-q">What is Morvo Executor? <span>▾</span></div>
+      <div class="faq-a">Morvo is a free Roblox script executor for Android that lets you run custom Lua scripts in Roblox games. It uses native ARM64 injection with a 7-layer Hyperion bypass, giving you full access to Roblox's Lua VM.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do I need a key? <span>▾</span></div>
+      <div class="faq-a">The key system keeps Morvo free. When you complete gateway tasks, ad partners pay us — that funds development, server costs, and rapid anti-cheat updates. Each key is valid for 24 hours and bound to your device.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I get a Morvo key? <span>▾</span></div>
+      <div class="faq-a">Open Morvo on your Android device, tap "Get Key", and you'll be redirected to the Loot-Link gateway. Complete a few quick tasks, and your 24-hour key will be generated automatically. Or visit our <a href="/key.html">Key Guide</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I bypass the key system? <span>▾</span></div>
+      <div class="faq-a">The official way to skip the key system is Morvo Premium ($5/month). Premium users get a keyless APK with no daily activation required. See our <a href="/premium.html">Premium page</a> for details.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Morvo detectable? <span>▾</span></div>
+      <div class="faq-a">Morvo uses 7 independent bypass layers including cache poisoning, PAC bypass, CRC manipulation, and debug evasion. While no executor is 100% undetectable forever, our auto-update CI/CD pipeline pushes new bypasses within hours of Roblox patches.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why can't I use the same key on multiple devices? <span>▾</span></div>
+      <div class="faq-a">Each key is bound to your device ID and IP address to prevent abuse and bot farming. Premium users can use up to 3 devices with one subscription.</div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta-footer">
   <div class="container">
     <h2>Ready to Execute?</h2>
-    <p>Download Morvo now and unlock the full potential of Roblox.</p>
-    <a href="https://github.com/mocasus/morvo/releases/latest/download/morvo-exe.apk?t=2" class="btn-lg" onclick="trackDownload('cta')">
-      ⬇ Download v0.5.1 — Free
-    </a>
+    <p>Download Morvo now and unlock the full potential of Roblox on Android.</p>
+    <div class="cta-btns">
+      <a href="/download.html" class="btn-download">⬇ Download v0.6.0 — Free</a>
+      <a href="/premium.html" class="btn-premium">⭐ Go Premium — $5/mo</a>
+    </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p>
-      <strong>Morvo Executor</strong> — Built by <a href="https://github.com/mocasus">@mocasus</a>
-      &nbsp;·&nbsp;
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/key.html">Get Key</a>
+      <a href="/download.html">Download</a>
+      <a href="/tutorial.html">Tutorial</a>
+      <a href="/premium.html">Premium</a>
       <a href="https://github.com/mocasus/morvo">GitHub</a>
-      &nbsp;·&nbsp;
-      <a href="https://morvo-dashboard.vercel.app">Dashboard</a>
-      &nbsp;·&nbsp;
-      v0.5.1
-    </p>
-    <p style="margin-top:0.5rem;font-size:0.65rem">
-      For research purposes only. Use only on games you own or have permission to test.
-    </p>
+    </div>
+    <p><strong>Morvo Executor</strong> — Built by <a href="https://github.com/mocasus">@mocasus</a> · v0.6.0</p>
+    <p class="disclaimer">For research purposes only. Use only on games you own or have permission to test. We are not affiliated with Roblox Corporation.</p>
   </div>
 </footer>
 
 <script>
-function trackDownload(platform) {
-  // Analytics placeholder
-  console.log(`Download: ${platform}`);
-}
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+  });
+});
 </script>
 </body>
 </html>
