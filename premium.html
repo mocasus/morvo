@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Morvo Premium — keyless Roblox script executor. No daily keys, no gateway tasks, 3 devices, exclusive scripts. $5/month.">
+<meta name="keywords" content="morvo premium, morvo keyless, roblox executor no key, morvo executor premium">
+<title>Morvo Premium — Keyless Roblox Executor | $5/month</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#06080a;--surface:#0d1117;--border:#21262d;--accent:#2ea44f;--text:#c9d1d9;--muted:#6e7681;--orange:#d2991d;--purple:#a371f7;--blue:#58a6ff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+
+nav{border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:100;background:rgba(6,8,10,0.95);backdrop-filter:blur(10px)}
+nav .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+nav .logo{font-size:1.3rem;font-weight:800;color:var(--accent);letter-spacing:-.5px}
+nav .logo span{color:var(--text);font-weight:400}
+nav .nav-links{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+nav .nav-links a{color:var(--muted);font-size:.82rem;transition:color .2s}
+nav .nav-links a:hover,.nav-links a.active{color:var(--text);text-decoration:none}
+nav .nav-links a.active{color:var(--accent)}
+nav .version{background:var(--surface);border:1px solid var(--border);padding:.2rem .65rem;border-radius:4px;font-size:.72rem;color:var(--accent);font-family:monospace}
+
+.page-header{padding:3rem 0 2rem;text-align:center}
+.page-header h1{font-size:2.2rem;font-weight:900;line-height:1.2;margin-bottom:.75rem}
+.page-header h1 .gold{color:var(--orange)}
+.page-header p{color:var(--muted);max-width:600px;margin:0 auto;font-size:.95rem}
+
+.content{padding:2rem 0 4rem}
+.content h2{font-size:1.3rem;margin:2.5rem 0 1rem;color:var(--text)}
+.content p{margin-bottom:1rem;font-size:.88rem;color:var(--muted);line-height:1.7}
+.content ul,.content ol{margin-bottom:1rem;padding-left:1.5rem;color:var(--muted);font-size:.88rem}
+.content li{margin-bottom:.4rem}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2rem 0}
+.pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem 1.5rem;text-align:center;transition:all .2s}
+.pricing-card.featured{border-color:var(--orange);box-shadow:0 0 30px rgba(210,153,29,0.15);transform:scale(1.02)}
+.pricing-card .plan-name{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+.pricing-card .plan-price{font-size:2.5rem;font-weight:900;margin-bottom:.25rem}
+.pricing-card .plan-price .currency{font-size:1.2rem;vertical-align:super}
+.pricing-card .plan-period{font-size:.75rem;color:var(--muted);margin-bottom:1.5rem}
+.pricing-card .plan-features{list-style:none;padding:0;text-align:left;margin-bottom:1.5rem}
+.pricing-card .plan-features li{padding:.4rem 0;font-size:.82rem;color:var(--muted)}
+.pricing-card .plan-features li::before{content:'✓';color:var(--accent);margin-right:.5rem;font-weight:700}
+.pricing-card .plan-btn{display:block;padding:.75rem;border-radius:6px;font-weight:700;font-size:.9rem;transition:all .2s}
+.pricing-card .plan-btn-free{background:var(--border);color:var(--text)}
+.pricing-card .plan-btn-premium{background:var(--orange);color:#000}
+.pricing-card .plan-btn-premium:hover{background:#e6a817;text-decoration:none}
+
+.compare-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.82rem}
+.compare-table th{text-align:left;padding:.75rem 1rem;background:var(--surface);border-bottom:2px solid var(--accent);font-weight:700}
+.compare-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border)}
+.compare-table .chk{color:var(--accent);font-weight:700}
+.compare-table .crs{color:var(--danger)}
+.compare-table .row-highlight{background:rgba(210,153,29,0.05)}
+
+.code-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.82rem;color:var(--accent);overflow-x:auto}
+.info-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.5rem 0}
+.info-box h4{color:var(--purple);margin-bottom:.5rem;font-size:.95rem}
+.info-box p,.info-box li{font-size:.82rem;color:var(--muted)}
+
+.btn{display:inline-block;padding:.9rem 2.5rem;background:var(--orange);color:#000;border-radius:8px;font-weight:800;font-size:1.1rem;transition:all .2s}
+.btn:hover{background:#e6a817;transform:scale(1.03);text-decoration:none}
+
+footer{padding:2rem 0;text-align:center;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border)}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+footer .footer-links a{color:var(--muted)}
+footer .footer-links a:hover{color:var(--accent);text-decoration:none}
+
+@media(max-width:768px){nav .nav-links{display:none}.page-header h1{font-size:1.6rem}.pricing-card.featured{transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">MORVO<span> executor</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a><a href="/key.html">Get Key</a>
+      <a href="/download.html">Download</a><a href="/tutorial.html">Tutorial</a>
+      <a href="/premium.html" class="active">Premium</a>
+      <span class="version">v0.6.0</span>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Morvo <span class="gold">Premium</span></h1>
+    <p>Go keyless. No daily gateway tasks, no 24-hour limits. Just pure script execution — always.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">forever</div>
+        <ul class="plan-features">
+          <li>All scripts & features</li>
+          <li>7-layer Hyperion bypass</li>
+          <li>Floating overlay menu</li>
+          <li>Script hub access</li>
+          <li>Daily key required</li>
+          <li>Gateway tasks</li>
+          <li>1 device per key</li>
+          <li>Standard updates</li>
+        </ul>
+        <a href="/download.html" class="plan-btn plan-btn-free">Download Free</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price"><span class="currency">$</span>5</div>
+        <div class="plan-period">per month</div>
+        <ul class="plan-features">
+          <li><strong>NO KEY — Keyless execution</strong></li>
+          <li>All scripts & features</li>
+          <li>7-layer Hyperion bypass</li>
+          <li><strong>Exclusive premium scripts</strong></li>
+          <li><strong>3 devices simultaneously</strong></li>
+          <li><strong>Priority auto-updates</strong></li>
+          <li><strong>Discord premium role</strong></li>
+          <li>Skip all gateway tasks — forever</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-premium">⭐ Get Premium — $5/mo</a>
+      </div>
+    </div>
+
+    <h2>Full Feature Comparison</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>Free</th><th>Premium</th></tr>
+      <tr><td>Script Hub (50+ scripts)</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+      <tr><td>7-Layer Hyperion Bypass</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+      <tr><td>Floating Overlay Menu</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+      <tr><td>Lua Code Editor</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+      <tr class="row-highlight"><td>Daily Key Required</td><td>Yes (24h)</td><td class="chk">NO KEY</td></tr>
+      <tr class="row-highlight"><td>Gateway Tasks</td><td>Required</td><td class="chk">SKIPPED</td></tr>
+      <tr class="row-highlight"><td>Exclusive Scripts</td><td class="crs">✗</td><td class="chk">✓ (15+ exclusive)</td></tr>
+      <tr class="row-highlight"><td>Multi-Device</td><td>1 device</td><td class="chk">3 devices</td></tr>
+      <tr class="row-highlight"><td>Update Priority</td><td>Standard</td><td class="chk">Priority (faster)</td></tr>
+      <tr class="row-highlight"><td>Discord Role</td><td class="crs">✗</td><td class="chk">Premium role</td></tr>
+      <tr class="row-highlight"><td>Support</td><td>Community</td><td class="chk">Priority support</td></tr>
+    </table>
+
+    <h2>How Premium Works</h2>
+    <ol>
+      <li><strong>Subscribe</strong> — $5/month via our payment partner.</li>
+      <li><strong>Receive Premium Key</strong> — You get a permanent premium key via email/Discord.</li>
+      <li><strong>Enter in Morvo</strong> — Open Morvo, enter your premium key once. It never expires.</li>
+      <li><strong>No more keys</strong> — Morvo auto-activates every time. No gateway, no daily tasks.</li>
+      <li><strong>Up to 3 devices</strong> — Use the same premium key on up to 3 Android devices.</li>
+    </ol>
+
+    <div class="info-box">
+      <h4>🔒 Premium Key Details</h4>
+      <p><strong>Format:</strong> <code>morvo-prem-xxxxxxxxxxxxxxxx</code></p>
+      <p><strong>Duration:</strong> Active as long as subscription is active</p>
+      <p><strong>Devices:</strong> Up to 3 Android devices simultaneously</p>
+      <p><strong>Delivery:</strong> Sent to your email or Discord DM after payment confirmation</p>
+      <p><strong>Cancellation:</strong> Cancel anytime. Key stops working at end of billing period.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#" class="btn">⭐ Get Premium — $5/month</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/key.html">Get Key</a><a href="/download.html">Download</a>
+      <a href="/tutorial.html">Tutorial</a><a href="/premium.html">Premium</a>
+      <a href="https://github.com/mocasus/morvo">GitHub</a>
+    </div>
+    <p><strong>Morvo Executor</strong> · v0.6.0</p>
+    <p style="font-size:.65rem;margin-top:.4rem">For research purposes only. Use only on games you own or have permission to test.</p>
+  </div>
+</footer>
+
+</body>
+</html>
