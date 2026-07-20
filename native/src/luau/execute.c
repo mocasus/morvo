@@ -21,7 +21,7 @@
 #endif
 
 // ARM64 pt_regs — not exposed in NDK headers, define manually
-struct user_pt_regs {
+struct morvo_pt_regs {
     unsigned long long regs[31];
     unsigned long long sp;
     unsigned long long pc;
@@ -47,7 +47,7 @@ struct user_pt_regs {
 // ============================================================
 // Trace trap handler — for intercepting function returns
 // ============================================================
-typedef int (*trace_callback_t)(pid_t pid, struct user_pt_regs* regs, void* ctx);
+typedef int (*trace_callback_t)(pid_t pid, struct morvo_pt_regs* regs, void* ctx);
 
 static int wait_for_trap(pid_t pid) {
     int status;
@@ -83,9 +83,9 @@ static int wait_for_trap(pid_t pid) {
 // ============================================================
 static int remote_call(pid_t pid, void* func_addr, 
                        uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3,
-                       struct user_pt_regs* out_regs) {
+                       struct morvo_pt_regs* out_regs) {
     
-    struct user_pt_regs regs, saved_regs;
+    struct morvo_pt_regs regs, saved_regs;
     
     // Save current registers
     if (ptrace(PTRACE_GETREGS, pid, NULL, &saved_regs) == -1) {
@@ -141,7 +141,7 @@ static void* remote_strdup(pid_t pid, const char* str) {
     // Syscall: mmap(addr=0, length=len, prot=PROT_READ|PROT_WRITE, 
     //               flags=MAP_PRIVATE|MAP_ANONYMOUS, fd=-1, offset=0)
     
-    struct user_pt_regs regs;
+    struct morvo_pt_regs regs;
     
     // ARM64 mmap syscall number: 222
     remote_call(pid, NULL,  // We'll inject the syscall manually
@@ -189,7 +189,7 @@ char* lua_execute(pid_t pid, void* L, const char* script) {
     int old_id = lua_set_identity(L, 8);
     
     // Step 4: Call luaL_loadbuffer(L, script, len, "=morvo")
-    struct user_pt_regs result;
+    struct morvo_pt_regs result;
     int ret = remote_call(pid, loadbuffer_addr,
                           (uint64_t)L,                    // x0: lua_State
                           (uint64_t)script_mem,           // x1: script content
