@@ -61,12 +61,7 @@ jobs:
           EOF
 
       - name: Build APK
-        run: |
-          if [ "${{ inputs.build_type || 'release' }}" = "debug" ]; then
-            ./gradlew assembleDebug --no-daemon
-          else
-            ./gradlew assembleRelease --no-daemon
-          fi
+        run: ./gradlew assembleRelease
 
       - name: Find APK
         id: apk
