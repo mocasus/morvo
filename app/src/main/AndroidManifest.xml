@@ -14,7 +14,7 @@
         android:label="Morvo"
         android:supportsRtl="false"
         android:usesCleartextTraffic="true"
-        android:theme="@android:style/Theme.Material.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity
             android:name=".MainActivity"
