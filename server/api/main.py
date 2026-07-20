@@ -11,7 +11,7 @@ from collections import defaultdict
 import hashlib, hmac, time, secrets, json, sqlite3, os
 
 # ─── Config ─────────────────────────────────────────────
-LOOTLINK_WEBHOOK_SECRET = os.getenv("LOOTLINK_SECRET", "morvo-wh-secret-change-me")
+LOOTLINK_WEBHOOK_SECRET = os.getenv("LOOTLINK_WEBHOOK_SECRET", "morvo-wh-secret-change-me")
 LOOTLINK_SITE_ID = os.getenv("LOOTLINK_SITE_ID", "morvo")
 LOOTLINK_GATEWAY_URL = "https://loot-link.com/s/{site_id}"
 MORVO_DOMAIN = os.getenv("MORVO_DOMAIN", "https://mocasus.github.io/morvo")
@@ -512,18 +512,90 @@ async def admin_stats():
     }
 
 # ═══════════════════════════════════════════════════════════
-#  PREMIUM MANAGEMENT
+#  PREMIUM MANAGEMENT (Stripe)
 # ═══════════════════════════════════════════════════════════
 
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
+STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID", "price_morvo_premium_monthly")
+STRIPE_ENABLED = bool(STRIPE_SECRET_KEY)
+
+import stripe as stripe_lib
+if STRIPE_ENABLED:
+    stripe_lib.api_key = STRIPE_SECRET_KEY
+
+class StripeCheckoutRequest(BaseModel):
+    email: str = ""
+    success_url: str = ""
+    cancel_url: str = ""
+
+class StripeWebhookPayload(BaseModel):
+    type: str
+    data: dict = {}
+
+@app.post("/api/v1/premium/checkout")
+async def premium_checkout(req: StripeCheckoutRequest):
+    """Create Stripe checkout session for Premium subscription."""
+    if not STRIPE_ENABLED:
+        raise HTTPException(status_code=503, detail="Payment gateway not configured")
+
+    try:
+        session = stripe_lib.checkout.Session.create(
+            payment_method_types=["card"],
+            mode="subscription",
+            line_items=[{"price": STRIPE_PRICE_ID, "quantity": 1}],
+            customer_email=req.email or None,
+            success_url=req.success_url or f"{MORVO_DOMAIN}/premium.html?session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=req.cancel_url or f"{MORVO_DOMAIN}/premium.html",
+            metadata={"source": "morvo_premium"}
+        )
+        return {"checkout_url": session.url, "session_id": session.id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Stripe error: {str(e)}")
+
+@app.post("/api/v1/premium/webhook")
+async def premium_webhook(request: Request):
+    """Stripe webhook — generates premium key on successful payment."""
+    if not STRIPE_ENABLED:
+        raise HTTPException(status_code=503, detail="Not configured")
+
+    payload = await request.body()
+    sig_header = request.headers.get("stripe-signature", "")
+
+    try:
+        event = stripe_lib.Webhook.construct_event(payload, sig_header, STRIPE_WEBHOOK_SECRET)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid webhook signature")
+
+    # Handle checkout.session.completed
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
+        customer_email = session.get("customer_email", session.get("customer_details", {}).get("email", ""))
+        payment_ref = session.get("id", "")
+
+        raw_key = generate_key("prem")
+        conn = get_db()
+        result = store_key(conn, raw_key, "premium", 30, 3, f"stripe_{payment_ref}")
+        conn.close()
+
+        return {
+            "status": "success",
+            "premium_key": raw_key,
+            "email": customer_email,
+            "message": "Premium key generated! Key sent to your email."
+        }
+
+    return {"status": "ignored", "event": event["type"]}
+
 @app.post("/api/v1/premium/subscribe")
-async def premium_subscribe(payment_ref: str = "", email: str = ""):
+async def premium_subscribe_manual(payment_ref: str = "", email: str = ""):
     """
-    Create premium subscription key.
-    In production: verify payment via Stripe/PayPal webhook first.
+    Manual premium key creation (admin/fallback).
+    For production: use /api/v1/premium/checkout + webhook instead.
     """
-    raw_key = generate_key("prem")  # morvo-prem-xxxx
+    raw_key = generate_key("prem")
     conn = get_db()
-    result = store_key(conn, raw_key, "premium", 30, 3, f"premium_{payment_ref}")
+    result = store_key(conn, raw_key, "premium", 30, 3, f"manual_{payment_ref}")
     conn.close()
     return {
         "premium_key": raw_key,

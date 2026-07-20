@@ -15,8 +15,8 @@ import kotlin.concurrent.thread
 
 class LicenseAPI(private val context: Context) {
 
-    // Production endpoint
-    private val API_BASE = "https://morvo-api.mocasus.my.id"
+    // Production endpoint — via nginx reverse proxy
+    private val API_BASE = "https://43.134.131.85/morvo"
     private val GATEWAY_URL = "$API_BASE/api/v1/gateway/redirect"
 
     private val prefs: SharedPreferences =
