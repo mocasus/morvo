@@ -5,13 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
-#include <asm/ptrace.h>
-#include <sys/user.h>
 #include <sys/mman.h>
 #include <sys/ptrace.h>
 #include <sys/wait.h>
 #include <sys/uio.h>
 #include <errno.h>
+#include <asm/ptrace.h>
 #include <android/log.h>
 
 // Android NDK bionic doesn't expose these in <sys/ptrace.h>
@@ -20,17 +19,6 @@
 #endif
 #ifndef PTRACE_SETREGS
 #define PTRACE_SETREGS 13
-#endif
-
-// NDK bionic doesn't expose user_pt_regs — define manually
-#ifndef _MORVO_PT_REGS_DEFINED
-#define _MORVO_PT_REGS_DEFINED
-struct user_pt_regs {
-    unsigned long long regs[31];
-    unsigned long long sp;
-    unsigned long long pc;
-    unsigned long long pstate;
-};
 #endif
 
 #include "luau.h"
