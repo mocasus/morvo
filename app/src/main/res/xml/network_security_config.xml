@@ -1,4 +1,5 @@
-# Network security config (allow cleartext for dev)
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Network security config — allow cleartext for dev -->
 <network-security-config>
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
