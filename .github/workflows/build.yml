@@ -1,0 +1,90 @@
+name: Morvo APK Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        default: 'release'
+        type: choice
+        options:
+          - debug
+          - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-34 build-tools;34.0.0 ndk;26.1.10909125 cmake;3.22.1'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Decode keystore
+        if: github.event_name != 'pull_request'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > app/morvo.keystore
+          else
+            # Generate debug keystore for CI
+            keytool -genkey -v -keystore app/morvo.keystore \
+              -alias morvo -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass android -keypass android \
+              -dname "CN=Morvo, OU=Dev, O=Morvo, L=UNKNOWN, S=UNKNOWN, C=US"
+          fi
+
+      - name: Create signing config
+        run: |
+          cat > app/signing.properties << 'EOF'
+          storeFile=morvo.keystore
+          storePassword=android
+          keyAlias=morvo
+          keyPassword=android
+          EOF
+
+      - name: Build APK
+        run: |
+          BUILD_TYPE="${{ inputs.build_type || 'release' }}"
+          ./gradlew assemble${BUILD_TYPE^} --no-daemon -x lint
+
+      - name: Find APK
+        id: apk
+        run: |
+          APK=$(find app/build/outputs/apk -name "*.apk" | head -1)
+          echo "apk_path=$APK" >> $GITHUB_OUTPUT
+          echo "apk_name=$(basename $APK)" >> $GITHUB_OUTPUT
+          ls -lh $APK
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: morvo-${{ inputs.build_type || 'release' }}
+          path: ${{ steps.apk.outputs.apk_path }}
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.apk.outputs.apk_path }}
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref, 'beta') || contains(github.ref, 'alpha') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

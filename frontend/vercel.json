@@ -1,0 +1,11 @@
+{
+  "name": "morvo-dashboard",
+  "version": 2,
+  "buildCommand": "mkdir -p .vercel/output/static && cp index.html .vercel/output/static/",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/proxy/(.*)", "destination": "/api/proxy?path=$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

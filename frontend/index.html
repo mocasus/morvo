@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morvo — Executor Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#0a0a0a;color:#e6edf3;min-height:100vh;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:2rem 1rem}
+
+/* Header */
+.header{border-bottom:1px solid #30363d;padding:1.5rem 0;margin-bottom:2rem}
+.header h1{font-size:1.2rem;color:#2ea44f}
+.header .sub{color:#6e7681;font-size:.75rem;margin-top:.25rem}
+
+/* Status bar */
+.statusbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:2rem}
+.stat{border:1px solid #30363d;background:#111;padding:1rem;text-align:center}
+.stat .val{font-size:1.5rem;font-weight:700;color:#2ea44f}
+.stat .lbl{font-size:.65rem;color:#6e7681;text-transform:uppercase;margin-top:.25rem}
+
+/* Panels */
+.panel{border:1px solid #30363d;background:#111;padding:1.5rem;margin-bottom:1rem}
+.panel-title{font-size:.8rem;color:#2ea44f;text-transform:uppercase;margin-bottom:1rem;letter-spacing:1px}
+.panel pre{background:#0a0a0a;border:1px solid #30363d;padding:1rem;overflow-x:auto;font-size:.7rem;color:#6e7681;white-space:pre-wrap;word-break:break-all;max-height:300px;overflow-y:auto}
+
+/* Form */
+.form-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+.form-row label{font-size:.65rem;color:#6e7681;text-transform:uppercase;width:100%}
+input,select,button{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.5rem .75rem;border:1px solid #30363d;background:#0a0a0a;color:#e6edf3;outline:none}
+input:focus,select:focus{border-color:#2ea44f}
+button{background:#161b22;color:#e6edf3;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .15s}
+button:hover{background:#2ea44f;color:#0a0a0a;border-color:#2ea44f}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.full{width:100%;padding:.75rem}
+select{width:100%}
+.input-group{display:flex;gap:.5rem}
+.input-group input{flex:1}
+
+/* Key card */
+.key-card{border:1px solid #30363d;padding:1rem;margin-bottom:.5rem}
+.key-card .k{font-size:.65rem;color:#2ea44f;word-break:break-all}
+.key-card .meta{font-size:.6rem;color:#6e7681;margin-top:.25rem}
+.key-card.danger{border-color:#da3633}
+
+/* Toast */
+.toast{position:fixed;bottom:1rem;right:1rem;padding:.75rem 1.25rem;font-size:.7rem;border:1px solid;z-index:999;max-width:400px}
+.toast.ok{background:#0a0a0a;border-color:#2ea44f;color:#2ea44f}
+.toast.err{background:#0a0a0a;border-color:#da3633;color:#da3633}
+
+/* Loading spinner */
+.spin{display:inline-block;width:12px;height:12px;border:2px solid #30363d;border-top-color:#2ea44f;border-radius:50%;animation:s .6s linear infinite;margin-right:.5rem;vertical-align:middle}
+@keyframes s{to{transform:rotate(360deg)}}
+
+/* Logo ASCII */
+.ascii{color:#2ea44f;font-size:.55rem;line-height:1;margin-bottom:1rem;white-space:pre}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="ascii">
+╔════════════════════════════════════════╗
+║  ███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗ ██████╗  ║
+║  ████╗ ████║██╔═══██╗██╔══██╗██║   ██║██╔═══██╗ ║
+║  ██╔████╔██║██║   ██║██████╔╝██║   ██║██║   ██║ ║
+║  ██║╚██╔╝██║██║   ██║██╔══██╗╚██╗ ██╔╝██║   ██║ ║
+║  ██║ ╚═╝ ██║╚██████╔╝██║  ██║ ╚████╔╝ ╚██████╔╝ ║
+║  ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝  ╚═══╝   ╚═════╝  ║
+║            ROBLOX EXECUTOR DASHBOARD             ║
+╚════════════════════════════════════════╝
+</div>
+
+<div class="header">
+  <h1>Morvo Dashboard</h1>
+  <div class="sub">v0.4.0 · API Status: <span id="apiStatus">checking...</span></div>
+</div>
+
+<div class="statusbar">
+  <div class="stat"><div class="val" id="activeKeys">—</div><div class="lbl">Active Keys</div></div>
+  <div class="stat"><div class="val" id="totalScripts">—</div><div class="lbl">Scripts</div></div>
+  <div class="stat"><div class="val" id="premiumKeys">—</div><div class="lbl">Premium</div></div>
+  <div class="stat"><div class="val" id="version">—</div><div class="lbl">Version</div></div>
+</div>
+
+<!-- Generate Key -->
+<div class="panel">
+  <div class="panel-title">◆ Generate License Key</div>
+  <div class="form-row">
+    <label>Key Type (Tier)</label>
+    <select id="keyTier">
+      <option value="free">Free — 1 device, 7 days</option>
+      <option value="basic" selected>Basic — 1 device, 30 days</option>
+      <option value="premium">Premium — 3 devices, 30 days</option>
+      <option value="lifetime">Lifetime — 5 devices, forever</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label>Duration (days)</label>
+    <input type="number" id="keyDays" value="30" min="1" max="3650">
+  </div>
+  <div class="form-row">
+    <label>Max Devices</label>
+    <input type="number" id="keyDevices" value="1" min="1" max="10">
+  </div>
+  <button class="full" onclick="generateKey()" id="genBtn">Generate Key</button>
+  <div id="keyResult" style="margin-top:1rem"></div>
+</div>
+
+<!-- Key Management -->
+<div class="panel">
+  <div class="panel-title">◆ Validate Key</div>
+  <div class="input-group">
+    <input type="text" id="validateKey" placeholder="Enter key to validate...">
+    <button onclick="validateKey()">Check</button>
+  </div>
+  <div id="validateResult" style="margin-top:.75rem;font-size:.65rem"></div>
+</div>
+
+<!-- List Keys -->
+<div class="panel">
+  <div class="panel-title">◆ All Keys (<span id="keyCount">...</span>)</div>
+  <button onclick="listKeys()" id="listBtn">Refresh List</button>
+  <div id="keyList" style="margin-top:.75rem"></div>
+</div>
+
+<!-- API Info -->
+<div class="panel">
+  <div class="panel-title">◆ API Reference</div>
+  <pre>Base URL: <span style="color:#2ea44f">http://43.134.131.85/morvo</span>
+
+POST /api/v1/validate          — Validate license key
+POST /api/v1/admin/keys        — Generate new key
+GET  /api/v1/scripts           — List available scripts
+GET  /api/v1/stats             — Dashboard statistics
+GET  /api/v1/health            — API health check
+
+curl -X POST http://43.134.131.85/morvo/api/v1/validate \
+  -H "Content-Type: application/json" \
+  -d '{"key":"YOUR_KEY","device_id":"samsung","hwid":"abc123"}'</pre>
+</div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ============================================================
+// API
+// ============================================================
+const API = 'http://43.134.131.85/morvo';
+
+async function fetchAPI(path, opts = {}) {
+  try {
+    const res = await fetch(`${API}${path}`, {
+      headers: { 'Content-Type': 'application/json', ...opts.headers },
+      ...opts
+    });
+    return await res.json();
+  } catch (e) {
+    return { error: e.message };
+  }
+}
+
+// ============================================================
+// Toast
+// ============================================================
+function toast(msg, ok = true) {
+  const el = document.getElementById('toast');
+  el.className = `toast ${ok ? 'ok' : 'err'}`;
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 4000);
+}
+
+// ============================================================
+// Actions
+// ============================================================
+async function generateKey() {
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Generating...';
+  
+  const tier = document.getElementById('keyTier').value;
+  const days = document.getElementById('keyDays').value;
+  const devices = document.getElementById('keyDevices').value;
+  
+  const data = await fetchAPI(`/api/v1/admin/keys?tier=${tier}&days=${days}&max_devices=${devices}`, {
+    method: 'POST'
+  });
+  
+  btn.disabled = false;
+  btn.textContent = 'Generate Key';
+  
+  if (data.key) {
+    document.getElementById('keyResult').innerHTML = `
+      <div class="key-card">
+        <div class="k">${data.key}</div>
+        <div class="meta">Tier: ${data.tier} · Expires: ${data.expires_in_days || data.days || '?'} days</div>
+      </div>`;
+    toast(`Key generated: ${data.key.substring(0, 16)}...`);
+    loadStats();
+  } else {
+    toast('Error: ' + (data.error || data.detail || 'Failed'), false);
+  }
+}
+
+async function validateKey() {
+  const key = document.getElementById('validateKey').value.trim();
+  if (!key) return;
+  
+  const data = await fetchAPI('/api/v1/validate', {
+    method: 'POST',
+    body: JSON.stringify({ key, device_id: 'test', hwid: 'test' })
+  });
+  
+  const el = document.getElementById('validateResult');
+  if (data.valid) {
+    el.innerHTML = `<span style="color:#2ea44f">✅ Valid</span> — Tier: ${data.tier} · Expires: ${data.expires_at}`;
+  } else {
+    el.innerHTML = `<span style="color:#da3633">❌ ${data.message || 'Invalid'}</span>`;
+  }
+}
+
+async function listKeys() {
+  const btn = document.getElementById('listBtn');
+  btn.disabled = true;
+  btn.textContent = 'Loading...';
+  
+  const data = await fetchAPI('/api/v1/admin/keys');
+  
+  btn.disabled = false;
+  btn.textContent = 'Refresh List';
+  
+  const el = document.getElementById('keyList');
+  if (data.keys && data.keys.length > 0) {
+    document.getElementById('keyCount').textContent = data.keys.length;
+    el.innerHTML = data.keys.map(k => {
+      const cls = k.tier === 'lifetime' ? 'danger' : '';
+      return `<div class="key-card ${cls}">
+        <div class="k">${k.key}</div>
+        <div class="meta">
+          Tier: ${k.tier} · Devices: ${k.devices}/${k.max_devices} · 
+          Created: ${k.created_at || '?'} · Expires: ${k.expires_at || 'never'}
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    el.innerHTML = '<span style="color:#6e7681">No keys found</span>';
+  }
+}
+
+async function loadStats() {
+  const data = await fetchAPI('/api/v1/health');
+  if (data.status === 'ok') {
+    document.getElementById('apiStatus').innerHTML = '<span style="color:#2ea44f">ONLINE</span>';
+    document.getElementById('activeKeys').textContent = data.active_keys || 0;
+    document.getElementById('totalScripts').textContent = data.scripts || 0;
+    document.getElementById('version').textContent = data.version || '?';
+    document.getElementById('premiumKeys').textContent = data.premium_keys || '—';
+  } else {
+    document.getElementById('apiStatus').innerHTML = '<span style="color:#da3633">OFFLINE</span>';
+  }
+}
+
+// Init
+loadStats();
+listKeys();
+
+// Allow Enter to validate
+document.getElementById('validateKey').addEventListener('keydown', e => {
+  if (e.key === 'Enter') validateKey();
+});
+</script>
+</body>
+</html>
